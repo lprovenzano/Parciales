@@ -1,0 +1,70 @@
+# depslib dependency file v1.0
+1495153501 source:c:\users\fofy\documents\utn\laboratorio\parcial\parcial-laboratorioi\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+	"funciones.h"
+
+1495140543 c:\users\fofy\documents\utn\laboratorio\parcial\parcial-laboratorioi\utn.h
+
+1495153654 c:\users\fofy\documents\utn\laboratorio\parcial\parcial-laboratorioi\funciones.h
+
+1453762398 source:c:\users\fofy\documents\utn\laboratorio\parcial\parcial-laboratorioi\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+
+1495153659 source:c:\users\fofy\documents\utn\laboratorio\parcial\parcial-laboratorioi\main.c
+	<stdio.h>
+	<stdlib.h>
+	"utn.h"
+	"funciones.h"
+
+1495208403 source:c:\users\lprovenzano\documents\luca\tecnicatura\practica-c-master\parcial-laboratorioi\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+
+1495218865 source:c:\users\lprovenzano\documents\luca\tecnicatura\practica-c-master\parcial-laboratorioi\main.c
+	<stdio.h>
+	<stdlib.h>
+	"utn.h"
+	"funciones.h"
+
+1495198127 c:\users\lprovenzano\documents\luca\tecnicatura\practica-c-master\parcial-laboratorioi\utn.h
+
+1495218840 c:\users\lprovenzano\documents\luca\tecnicatura\practica-c-master\parcial-laboratorioi\funciones.h
+
+1495218935 source:c:\users\lprovenzano\documents\luca\tecnicatura\practica-c-master\parcial-laboratorioi\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+	"funciones.h"
+
+1495433481 source:f:\parcial-laboratorioi\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+	"funciones.h"
+
+1495198128 f:\parcial-laboratorioi\utn.h
+
+1495428971 f:\parcial-laboratorioi\funciones.h
+
+1495430596 source:f:\parcial-laboratorioi\main.c
+	<stdio.h>
+	<stdlib.h>
+	"utn.h"
+	"funciones.h"
+
+1495208404 source:f:\parcial-laboratorioi\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+
