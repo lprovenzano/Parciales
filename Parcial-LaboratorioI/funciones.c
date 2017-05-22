@@ -214,7 +214,7 @@ void listarProgramador(Programador arrayProgramador[], Categoria niveles[],int t
                             break;
                         }
                     }
-                    printf(" %d   %-s\t%-s\t    %-s\t%-5s        $ %-.2f\n", arrayProgramador[i].id,arrayProgramador[i].nombre, arrayProgramador[i].apellido, auxCategoria, titulo, montoACobrar*precioHoras);
+                    printf(" %d   %-s\t%-12s %s\t%-s        $ %-.2f\n", arrayProgramador[i].id,arrayProgramador[i].nombre, arrayProgramador[i].apellido, auxCategoria, titulo, montoACobrar*precioHoras);
                 }
             }
         }
@@ -525,7 +525,7 @@ void listarProyecto(Proyecto arrayProyecto[], int tamProy, Programador arrayProg
         }
         totalPersonas = junior+semisr+senior;
         arrayProyecto[i].cantProgramadores = totalPersonas;
-        printf("  %d\t%-25s\t%d\t%d\t%d      %d\n", arrayProyecto[i].id,arrayProyecto[i].titulo, junior, semisr, senior, totalPersonas);
+        printf("  %d\t%-29s%-10d%-02d\t%d       %d\n", arrayProyecto[i].id,arrayProyecto[i].titulo, junior, semisr, senior, totalPersonas);
         junior = 0;
         semisr = 0;
         senior = 0;
