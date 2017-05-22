@@ -447,7 +447,6 @@ void borrarProgramador(Programador arrayProgramador[], Categoria niveles[],int t
         printf("No se ha podido borrar, el ID de programador no existe.");
         getChar("\n\nENTER (para continuar)");
         system("@cls||clear");
-        menu();
     }
     menu();
 }
@@ -571,7 +570,16 @@ void asignarProgramador(Programador arrayProgramador[], int tamProg, Proyecto ar
         getChar("\n\nENTER (para continuar)");
         system("@cls||clear");
 
-        listarProgramador(arrayProgramador, niveles, tamProg, progProyecto, arrayProyecto, tamProy);
+        printf("LISTADO DE PROGRAMADORES\n");
+        printf("-------------------------------------------------------\n\n");
+        printf("|ID|  NOMBRE  |  APELLIDO  |  CATEGORIA\n\n");
+        for(j=0; j<tamProg; j++)
+        {
+            if(arrayProgramador[j].estado!=0)
+            {
+                printf(" %d   %-s\t%-s\t        %-d\n", arrayProgramador[j].id,arrayProgramador[j].nombre, arrayProgramador[j].apellido, arrayProgramador[j].idCategoria);
+            }
+        }
         idAuxiliarProgramador = getValidInt("\n\nID de Programador: ", "Error! solo numerico.", 1,50);
         validoBusqueda = buscarProgramadorId(arrayProgramador, idAuxiliarProgramador, tamProg);
     }
@@ -587,7 +595,7 @@ void asignarProgramador(Programador arrayProgramador[], int tamProg, Proyecto ar
     }
     idAuxiliarProyecto = getValidInt("\n\nID de Proyecto: ", "Error! solo numerico.", 5,7);
     horas = getFloat("Cantidad de horas: ");
-    while(horas<0)
+    while(horas<=0)
     {
         horas = getFloat("Debe ser mayor a 0 (cero)\nCantidad de horas: ");
     }
@@ -601,6 +609,8 @@ void asignarProgramador(Programador arrayProgramador[], int tamProg, Proyecto ar
                 if(progProyecto[j].estado  == 1 && progProyecto[j].idProgramador == idAuxiliarProgramador && progProyecto[j].idProyecto == idAuxiliarProyecto)
                 {
                     printf("\nYa existe ese programador en este proyecto.");
+                    getChar("\n\nENTER (para continuar)");
+                    system("@cls||clear");
                     break;
                 }
                 if(progProyecto[j].estado == 0)
@@ -622,7 +632,6 @@ void asignarProgramador(Programador arrayProgramador[], int tamProg, Proyecto ar
         printf("\nEl ID de Programador no existe");
         getChar("\n\nENTER (para continuar)");
         system("@cls||clear");
-        menu();
     }
     menu();
 
