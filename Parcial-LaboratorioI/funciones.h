@@ -33,7 +33,7 @@ typedef struct
     float cantHoras;
 } ProgramadorProyecto;
 
-/**HACER EL DOXY!!!!! DOCUMENTAR**/
+
 
 void menu();
 void inicializoEnCero(Programador arrayProgramador[], ProgramadorProyecto progProyecto[],int tam, int valor);
@@ -49,6 +49,7 @@ int buscarPosicionProgramador(Programador arrayProgramador[], int tamProg);
 int buscarIndiceProgramador(Programador arrayProgramador[], int idBusqueda, int tamProg);
 void modificarProgramador(Programador arrayProgramador[], Categoria niveles[],int tam, ProgramadorProyecto progProyecto[], Proyecto arrayProyecto[], int tamProy);
 void borrarProgramador(Programador arrayProgramador[], Categoria niveles[],int tam, ProgramadorProyecto progProyecto[], Proyecto arrayProyecto[], int tamProy);
+
 //Proyecto
 void cargarProyecto(Proyecto arrayProyecto[]);
 void listarProyecto(Proyecto arrayProyecto[], int tamProy, Programador arrayProgramador[], int tamProg, ProgramadorProyecto progProyecto[]);
@@ -56,8 +57,6 @@ void asignarProgramador(Programador arrayProgramador[], int tamProg, Proyecto ar
 void programadorEnProyecto(Programador arrayProgramador[], int tamP, Proyecto arrayProyecto[], int tamY);
 void listarProyectosProgramador(Programador arrayProgramador[], int tamProg, Proyecto arrayProyecto[], int tamProy, ProgramadorProyecto progProyecto[], Categoria niveles[]);
 void proyectoMasDemandado(Proyecto arrayProyecto[], int tamProy, ProgramadorProyecto progProyecto[]);
-
-//void mostrarProgramadorProyecto(Proyecto arrayProyecto[], int tamProy, Programador arrayProgramador[], int tamProg, ProgramadorProyecto progProyecto[]);
 
 #endif // FUNCIONES_H
 

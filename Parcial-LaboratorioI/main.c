@@ -42,41 +42,42 @@ int main()
     menu();
     do
     {
-       opcion = getValidInt("", "Debe ser un numero valido.",0,9);
-       switch(opcion)
-       {
-       case 1:
-           altaProgramador(arrayProgramador, MAXPROGRAMADOR);
-        break;
+        opcion = getValidInt("", "Debe ser un numero valido.",0,9);
+        switch(opcion)
+        {
+        case 1:
+            altaProgramador(arrayProgramador, MAXPROGRAMADOR);
+            break;
         case 2:
             modificarProgramador(arrayProgramador, niveles, MAXPROGRAMADOR, progProyecto, arrayProyecto, MAXPROYECTO);
-        break;
+            break;
         case 3:
             borrarProgramador(arrayProgramador, niveles, MAXPROGRAMADOR, progProyecto, arrayProyecto, MAXPROYECTO);
-        break;
+            break;
         case 4:
             asignarProgramador(arrayProgramador, MAXPROGRAMADOR, arrayProyecto, MAXPROYECTO, progProyecto, niveles);
-        break;
+            break;
         case 5:
             listarProgramador(arrayProgramador, niveles, MAXPROGRAMADOR, progProyecto, arrayProyecto, MAXPROYECTO);
             getChar("\n\nENTER (para continuar)");
             system("@cls||clear");
             menu();
-        break;
+            break;
         case 6:
             system("@cls||clear");
             listarProyecto(arrayProyecto, MAXPROYECTO, arrayProgramador, MAXPROGRAMADOR, progProyecto);
             getChar("\n\nENTER (para continuar)");
             system("@cls||clear");
             menu();
-        break;
+            break;
         case 7:
             listarProyectosProgramador(arrayProgramador, MAXPROGRAMADOR, arrayProyecto, MAXPROYECTO, progProyecto, niveles);
-        break;
+            break;
         case 8:
             proyectoMasDemandado(arrayProyecto, MAXPROYECTO, progProyecto);
-        break;
-       }
-    }while(opcion!=0);
+            break;
+        }
+    }
+    while(opcion!=0);
     return 0;
 }

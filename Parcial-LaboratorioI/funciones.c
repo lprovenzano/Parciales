@@ -713,9 +713,9 @@ void proyectoMasDemandado(Proyecto arrayProyecto[], int tamProy, ProgramadorProy
     int i,j;
     Proyecto auxiliar;
 
-    for(i=0;i<3-1;i++)
+    for(i=0; i<3-1; i++)
     {
-        for(j=i+1;j<3;j++)
+        for(j=i+1; j<3; j++)
         {
             if(arrayProyecto[i].cantProgramadores<arrayProyecto[j].cantProgramadores)
             {
@@ -727,7 +727,7 @@ void proyectoMasDemandado(Proyecto arrayProyecto[], int tamProy, ProgramadorProy
     }
     system("@cls||clear");
 
-    for(i=0;i<3;i++)
+    for(i=0; i<3; i++)
     {
         printf("\n%s es el mas demandado, tiene %d programador/es.\n", arrayProyecto[i].titulo,arrayProyecto[i].cantProgramadores);
         break;
