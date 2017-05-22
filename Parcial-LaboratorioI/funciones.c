@@ -4,6 +4,12 @@
 #include "utn.h"
 #include "funciones.h"
 
+/**
+*\brief Muestra el menu por pantalla
+*\param -
+*\return void.
+*
+*/
 void menu()
 {
     printf("MENU\n----------------------------------\n\n");
@@ -19,6 +25,16 @@ void menu()
 
 }
 
+
+/**
+*\brief Inicializa los estados de la estructura Programador y ProgramadorProyecto en cero (0)
+*\param Array de estructura Programador.
+*\param Array de estructura ProgramadorProyecto.
+*\param Tamaño array estructura Programador.
+*\param Valor con el que se inicializarán las variables.
+*\return void.
+*
+*/
 void inicializoEnCero(Programador arrayProgramador[], ProgramadorProyecto progProyecto[],int tam, int valor)
 {
     int i,j;
@@ -32,6 +48,12 @@ void inicializoEnCero(Programador arrayProgramador[], ProgramadorProyecto progPr
     }
 }
 
+/**
+*\brief Carga la estructura de Categorias con sus respectivos datos.
+*\param Array de estructura Categoria.
+*\return void.
+*
+*/
 void cargarCategorias(Categoria niveles[])
 {
     int categorias[3] = {1, 2, 3};
@@ -46,6 +68,13 @@ void cargarCategorias(Categoria niveles[])
     }
 }
 
+/**
+*\brief Alta de programadores en el ABM.
+*\param Array de estructura Programador.
+*\param Tamaño array estructura Programador.
+*\return void.
+*
+*/
 void altaProgramador(Programador arrayProgramador[], int tam)
 {
     int i, flag=0;
@@ -74,6 +103,12 @@ void altaProgramador(Programador arrayProgramador[], int tam)
     menu();
 }
 
+/**
+*\brief Carga de programadores preestablecidos en el ABM.
+*\param Array de estructura Programador.
+*\return void.
+*
+*/
 void cargarProgramador(Programador arrayProgramador[])
 {
     //Cargo algunos por defecto para test
@@ -91,6 +126,14 @@ void cargarProgramador(Programador arrayProgramador[])
         arrayProgramador[k].estado = 1;
     }
 }
+
+/**
+*\brief Ordena los programadores de menor a mayor.
+*\param Array de estructura Programador.
+*\param Tamaño array estructura Programador.
+*\return void.
+*
+*/
 
 void ordenarProgramadores(Programador arrayProgramador[], int tamProg)
 {
@@ -121,12 +164,24 @@ void ordenarProgramadores(Programador arrayProgramador[], int tamProg)
     }
 }
 
+/**
+*\brief Muestra en pantalla los programadores, los proyectos en los que fueron asignados y la suma a cobrar segun su categoria.
+*\param Array de estructura Programador.
+*\param Array de estructura Categoria.
+*\param Tamaño array estructura Programador.
+*\param Array de estructura ProgramadorProyecto.
+*\param Array de estructura Proyecto.
+*\param Tamaño array estructura Proyecto.
+*\return void.
+*
+*/
+
 void listarProgramador(Programador arrayProgramador[], Categoria niveles[],int tam, ProgramadorProyecto progProyecto[], Proyecto arrayProyecto[], int tamProy)
 {
     int i,j,k,l, auxiliarID;
     char auxCategoria[21], titulo[51];
     float montoACobrar, precioHoras;
-    //Carga secuencial por opcion
+
     system("@cls||clear");
     printf("LISTADO DE PROGRAMADORES\n");
     printf("-------------------------------------------------------\n\n");
@@ -146,7 +201,6 @@ void listarProgramador(Programador arrayProgramador[], Categoria niveles[],int t
                     break;
                 }
             }
-
             for(j=0; j<15; j++)
             {
                 if(auxiliarID == progProyecto[j].idProgramador && progProyecto[j].estado==1)
@@ -167,6 +221,15 @@ void listarProgramador(Programador arrayProgramador[], Categoria niveles[],int t
     }
 }
 
+/**
+*\brief Busca un programador por codigo/ID dentro de un array.
+*\param Array de estructura Programador.
+*\param busqueda: ID Programador a buscar.
+*\param Tamaño array estructura Programador.
+*\return Devuelve 1 si el programador existe, de lo contrario devolverá 0.
+*
+*/
+
 int buscarProgramadorId(Programador arrayProgramador[], int busqueda, int tam)
 {
     int i, flag=0;
@@ -181,6 +244,14 @@ int buscarProgramadorId(Programador arrayProgramador[], int busqueda, int tam)
     return flag;
 }
 
+/**
+*\brief Busca la posicion vacía dentro de la estructura Programador.
+*\param Array de estructura Programador.
+*\param Tamaño array estructura Programador.
+*\return Devuelve el indice disponible para cargar, de lo contrario devolverá -1.
+*
+*/
+
 int buscarPosicionProgramador(Programador arrayProgramador[], int tamProg)
 {
     int i;
@@ -193,6 +264,15 @@ int buscarPosicionProgramador(Programador arrayProgramador[], int tamProg)
     }
     return -1;
 }
+
+/**
+*\brief Busca el indice de un programador mediante codigo/ID dentro del array.
+*\param Array de estructura Programador.
+*\param idBusqueda: ID Programador a buscar.
+*\param Tamaño array estructura Programador.
+*\return Devuelve el indice perteneciente al programador buscado, de no existir devolverá -1.
+*
+*/
 
 int buscarIndiceProgramador(Programador arrayProgramador[], int idBusqueda, int tamProg)
 {
@@ -207,9 +287,20 @@ int buscarIndiceProgramador(Programador arrayProgramador[], int idBusqueda, int 
     return -1;
 }
 
+/**
+*\brief Permite modificar datos de un programador (Nombre/Apellido/Categoria) dentro de la estructura.
+*\param Array de estructura Programador.
+*\param Array de estructura Categoria.
+*\param Tamaño array estructura Programador.
+*\param Array de estructura ProgramadorProyecto.
+*\param Array de estructura Proyecto.
+*\param Tamaño array estructura Proyecto.
+*\return void.
+*
+*/
+
 void modificarProgramador(Programador arrayProgramador[], Categoria niveles[],int tam, ProgramadorProyecto progProyecto[], Proyecto arrayProyecto[], int tamProy)
 {
-    //listarProgramador(arrayProgramador, niveles, tam, progProyecto, arrayProyecto, tamProy);
     system("@cls||clear");
     int i,j, idAuxiliar, validoBusqueda,flag=0, opcion;
     printf("LISTADO DE PROGRAMADORES\n");
@@ -230,7 +321,7 @@ void modificarProgramador(Programador arrayProgramador[], Categoria niveles[],in
         printf("Ese ID no existe.");
         getChar("\n\nENTER (para continuar)");
         system("@cls||clear");
-        //listarProgramador(arrayProgramador, niveles, tam, progProyecto, arrayProyecto, tamProy);
+
         printf("LISTADO DE PROGRAMADORES\n");
         printf("-------------------------------------------------------\n\n");
         printf("|ID|  NOMBRE  |  APELLIDO  |  CATEGORIA\n\n");
@@ -291,6 +382,17 @@ void modificarProgramador(Programador arrayProgramador[], Categoria niveles[],in
 
 }
 
+/**
+*\brief Permite dar de baja un programador seleccionado por ID.
+*\param Array de estructura Programador.
+*\param Array de estructura Categoria.
+*\param Tamaño array estructura Programador.
+*\param Array de estructura ProgramadorProyecto.
+*\param Array de estructura Proyecto.
+*\param Tamaño array estructura Proyecto.
+*\return void.
+*
+*/
 void borrarProgramador(Programador arrayProgramador[], Categoria niveles[],int tam, ProgramadorProyecto progProyecto[], Proyecto arrayProyecto[], int tamProy)
 {
     system("@cls||clear");
@@ -350,11 +452,17 @@ void borrarProgramador(Programador arrayProgramador[], Categoria niveles[],int t
     menu();
 }
 
+/**
+*\brief Carga proyectos preestablecidos dentro de la estructura.
+*\param Array de estructura Proyecto.
+*\return void.
+*
+*/
 void cargarProyecto(Proyecto arrayProyecto[])
 {
     int i;
     int idProyecto[3] = {5,6,7};
-    char descripcion [3][51] = {"Programador Android","Programador COBOL","Programador JAVA"};
+    char descripcion [3][51] = {"Programador NODE","Programador RUBY","Programador JAVA"};
     int cantidad[3] = {0};
 
     for(i=0; i<3; i++)
@@ -364,6 +472,17 @@ void cargarProyecto(Proyecto arrayProyecto[])
         arrayProyecto[i].cantProgramadores = cantidad[i];
     }
 }
+
+/**
+*\brief Muestra en pantalla los proyectos cargados y la cantidad de programadores trabajando en el mismo.
+*\param Array de estructura Proyecto.
+*\param Tamaño array estructura Proyecto.
+*\param Array de estructura Programador.
+*\param Tamaño array estructura Programador.
+*\param Array de estructura ProgramadorProyecto.
+*\return void.
+*
+*/
 
 void listarProyecto(Proyecto arrayProyecto[], int tamProy, Programador arrayProgramador[], int tamProg, ProgramadorProyecto progProyecto[])
 {
@@ -414,11 +533,24 @@ void listarProyecto(Proyecto arrayProyecto[], int tamProy, Programador arrayProg
     }
 }
 
+/**
+*\brief Asigna un programador a un proyecto mediante ID.
+*\param Array de estructura Programador.
+*\param Tamaño array estructura Programador.
+*\param Array de estructura Proyecto.
+*\param Tamaño array estructura Proyecto.
+*\param Array de estructura ProgramadorProyecto.
+*\param Array de estructura Categoria.
+*\return void.
+*
+*/
+
 void asignarProgramador(Programador arrayProgramador[], int tamProg, Proyecto arrayProyecto[], int tamProy, ProgramadorProyecto progProyecto[], Categoria niveles[])
 {
     int idAuxiliarProgramador,idAuxiliarProyecto,validoBusqueda, i,j,k, flag=0;
     float horas;
     system("@cls||clear");
+
     printf("LISTADO DE PROGRAMADORES\n");
     printf("-------------------------------------------------------\n\n");
     printf("|ID|  NOMBRE  |  APELLIDO  |  CATEGORIA\n\n");
@@ -438,12 +570,14 @@ void asignarProgramador(Programador arrayProgramador[], int tamProg, Proyecto ar
         printf("Ese ID no existe.");
         getChar("\n\nENTER (para continuar)");
         system("@cls||clear");
+
         listarProgramador(arrayProgramador, niveles, tamProg, progProyecto, arrayProyecto, tamProy);
         idAuxiliarProgramador = getValidInt("\n\nID de Programador: ", "Error! solo numerico.", 1,50);
         validoBusqueda = buscarProgramadorId(arrayProgramador, idAuxiliarProgramador, tamProg);
     }
 
     system("@cls||clear");
+
     printf("\nLISTADO DE PROYECTOS\n");
     printf("-------------------------------------------------------\n\n");
     printf("| ID |          NOMBRE          | CANT. PROG \n\n");
@@ -457,8 +591,6 @@ void asignarProgramador(Programador arrayProgramador[], int tamProg, Proyecto ar
     {
         horas = getFloat("Debe ser mayor a 0 (cero)\nCantidad de horas: ");
     }
-
-    //RELACION
     for(i=0; i<tamProg; i++)
     {
         if(arrayProgramador[i].id == idAuxiliarProgramador && arrayProgramador[i].estado == 1)
@@ -492,26 +624,28 @@ void asignarProgramador(Programador arrayProgramador[], int tamProg, Proyecto ar
         system("@cls||clear");
         menu();
     }
-
-    printf("ESTRUCTURA RELACIONAL\n\n");
-    for(k=0; k<10; k++)
-    {
-        if(progProyecto[k].estado != 0)
-        {
-            printf("\n id programdor %d, id proyecto %d, estado %d, horas %.02f", progProyecto[k].idProgramador, progProyecto[k].idProyecto, progProyecto[k].estado, progProyecto[k].cantHoras);
-        }
-    }
-    getChar("\n\nENTER (para continuar)");
-    system("@cls||clear");
     menu();
 
 }
 
+
+/**
+*\brief Muestra en pantalla los proyectos en los que se encuentra trabajando un programador.
+*\param Array de estructura Programador.
+*\param Tamaño array estructura Programador.
+*\param Array de estructura Proyecto.
+*\param Tamaño array estructura Proyecto.
+*\param Array de estructura ProgramadorProyecto.
+*\param Array de estructura Categoria.
+*\return void.
+*
+*/
 void listarProyectosProgramador(Programador arrayProgramador[], int tamProg, Proyecto arrayProyecto[], int tamProy, ProgramadorProyecto progProyecto[], Categoria niveles[])
 {
     int idAuxiliarProgramador,validoBusqueda, i,j, indice, flag=0;
     char titulo[51];
     system("@cls||clear");
+
     printf("LISTADO DE PROGRAMADORES\n");
     printf("-------------------------------------------------------\n\n");
     printf("|ID|  NOMBRE  |  APELLIDO  |  CATEGORIA\n\n");
@@ -531,6 +665,7 @@ void listarProyectosProgramador(Programador arrayProgramador[], int tamProg, Pro
         printf("Ese ID no existe.");
         getChar("\n\nENTER (para continuar)");
         system("@cls||clear");
+
         listarProgramador(arrayProgramador, niveles, tamProg, progProyecto, arrayProyecto, tamProy);
         idAuxiliarProgramador = getValidInt("\n\nID de Programador: ", "Error! solo numerico.", 1,50);
         validoBusqueda = buscarProgramadorId(arrayProgramador, idAuxiliarProgramador, tamProg);
@@ -545,28 +680,39 @@ void listarProyectosProgramador(Programador arrayProgramador[], int tamProg, Pro
                 if(arrayProyecto[j].id == progProyecto[i].idProyecto)
                 {
                     strcpy(titulo, arrayProyecto[j].titulo);
+                    break;
                 }
             }
             system("@cls||clear");
-            printf("%-s %-s \n \t%-d %-s", arrayProgramador[indice].nombre,arrayProgramador[indice].apellido, progProyecto[i].idProyecto,titulo);
+
+            printf("%-s %-s \n\n \t(%-d) %-s", arrayProgramador[indice].nombre,arrayProgramador[indice].apellido, progProyecto[i].idProyecto, titulo);
             flag=1;
         }
     }
     if(flag==0)
     {
         system("@cls||clear");
-        printf("No existen proyectos para ese programador");
+        printf("No existen proyectos para ese programador.");
     }
     getChar("\n\nENTER (para continuar)");
     system("@cls||clear");
     menu();
 
 }
-
+/**
+*\brief Muestra en pantalla el proyecto con mayor cantidad de programadores asignados (mas demandante).
+*\param Array de estructura Proyecto.
+*\param Tamaño array estructura Proyecto.
+*\param Array de estructura ProgramadorProyecto.
+*\param Array de estructura Categoria.
+*\return void.
+*
+*/
 void proyectoMasDemandado(Proyecto arrayProyecto[], int tamProy, ProgramadorProyecto progProyecto[])
 {
     int i,j;
     Proyecto auxiliar;
+
     for(i=0;i<3-1;i++)
     {
         for(j=i+1;j<3;j++)
@@ -580,9 +726,10 @@ void proyectoMasDemandado(Proyecto arrayProyecto[], int tamProy, ProgramadorProy
         }
     }
     system("@cls||clear");
+
     for(i=0;i<3;i++)
     {
-        printf("\n%s es el mas demandado, tiene %d programadores.\n", arrayProyecto[i].titulo,arrayProyecto[i].cantProgramadores);
+        printf("\n%s es el mas demandado, tiene %d programador/es.\n", arrayProyecto[i].titulo,arrayProyecto[i].cantProgramadores);
         break;
     }
 

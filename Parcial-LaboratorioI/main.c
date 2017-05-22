@@ -1,3 +1,13 @@
+/*******************************************************************
+    *   Programa: Parcial Laboratorio I - Recuperatorio.
+    *
+    *
+    *   Version:0.1 - 22/05/2017.
+    *   Autor: Luca Provenzano | 1F.
+    *
+********************************************************************/
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "utn.h"
@@ -27,7 +37,6 @@ int main()
 
     //Ordenamientos
     ordenarProgramadores(arrayProgramador, MAXPROGRAMADOR);
-
     //__________________________________________________________________
 
     menu();

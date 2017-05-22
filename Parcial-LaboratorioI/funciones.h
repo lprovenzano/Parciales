@@ -36,13 +36,12 @@ typedef struct
 /**HACER EL DOXY!!!!! DOCUMENTAR**/
 
 void menu();
-void mostrarER(ProgramadorProyecto progProyecto[], int tam);
 void inicializoEnCero(Programador arrayProgramador[], ProgramadorProyecto progProyecto[],int tam, int valor);
 void cargarCategorias(Categoria niveles[]);
+
 //Programador
 void cargarProgramador(Programador arrayProgramador[]);
 void altaProgramador(Programador arrayProgramador[], int tam);
-//void listarProgramador(Programador arrayProgramador[], Categoria niveles[],int tam);
 void ordenarProgramadores(Programador arrayProgramador[], int tamProg);
 void listarProgramador(Programador arrayProgramador[], Categoria niveles[],int tam, ProgramadorProyecto progProyecto[], Proyecto arrayProyecto[], int tamProy);
 int buscarProgramadorId(Programador arrayProgramador[], int busqueda, int tam);
@@ -52,15 +51,13 @@ void modificarProgramador(Programador arrayProgramador[], Categoria niveles[],in
 void borrarProgramador(Programador arrayProgramador[], Categoria niveles[],int tam, ProgramadorProyecto progProyecto[], Proyecto arrayProyecto[], int tamProy);
 //Proyecto
 void cargarProyecto(Proyecto arrayProyecto[]);
-//void listarProyecto(Proyecto arrayProyecto[], int tam);
 void listarProyecto(Proyecto arrayProyecto[], int tamProy, Programador arrayProgramador[], int tamProg, ProgramadorProyecto progProyecto[]);
 void asignarProgramador(Programador arrayProgramador[], int tamProg, Proyecto arrayProyecto[], int tamProy, ProgramadorProyecto progProyecto[], Categoria niveles[]);
 void programadorEnProyecto(Programador arrayProgramador[], int tamP, Proyecto arrayProyecto[], int tamY);
 void listarProyectosProgramador(Programador arrayProgramador[], int tamProg, Proyecto arrayProyecto[], int tamProy, ProgramadorProyecto progProyecto[], Categoria niveles[]);
 void proyectoMasDemandado(Proyecto arrayProyecto[], int tamProy, ProgramadorProyecto progProyecto[]);
 
-void cargarRelacion(ProgramadorProyecto progProyecto[]);
-void mostrarProgramadorProyecto(Proyecto arrayProyecto[], int tamProy, Programador arrayProgramador[], int tamProg, ProgramadorProyecto progProyecto[]);
+//void mostrarProgramadorProyecto(Proyecto arrayProyecto[], int tamProy, Programador arrayProgramador[], int tamProg, ProgramadorProyecto progProyecto[]);
 
 #endif // FUNCIONES_H
 
