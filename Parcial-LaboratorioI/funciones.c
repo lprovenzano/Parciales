@@ -547,7 +547,7 @@ void listarProyecto(Proyecto arrayProyecto[], int tamProy, Programador arrayProg
 
 void asignarProgramador(Programador arrayProgramador[], int tamProg, Proyecto arrayProyecto[], int tamProy, ProgramadorProyecto progProyecto[], Categoria niveles[])
 {
-    int idAuxiliarProgramador,idAuxiliarProyecto,validoBusqueda, i,j,k, flag=0;
+    int idAuxiliarProgramador,idAuxiliarProyecto,validoBusqueda, i,j, flag=0;
     float horas;
     system("@cls||clear");
 
@@ -666,11 +666,23 @@ void listarProyectosProgramador(Programador arrayProgramador[], int tamProg, Pro
         getChar("\n\nENTER (para continuar)");
         system("@cls||clear");
 
-        listarProgramador(arrayProgramador, niveles, tamProg, progProyecto, arrayProyecto, tamProy);
+        printf("LISTADO DE PROGRAMADORES\n");
+        printf("-------------------------------------------------------\n\n");
+        printf("|ID|  NOMBRE  |  APELLIDO  |  CATEGORIA\n\n");
+        for(j=0; j<tamProg; j++)
+        {
+            if(arrayProgramador[j].estado!=0)
+            {
+                printf(" %d   %-s\t%-s\t        %-d\n", arrayProgramador[j].id,arrayProgramador[j].nombre, arrayProgramador[j].apellido, arrayProgramador[j].idCategoria);
+            }
+        }
         idAuxiliarProgramador = getValidInt("\n\nID de Programador: ", "Error! solo numerico.", 1,50);
         validoBusqueda = buscarProgramadorId(arrayProgramador, idAuxiliarProgramador, tamProg);
     }
+
     indice = buscarIndiceProgramador(arrayProgramador, idAuxiliarProgramador, tamProg);
+    system("@cls||clear");
+
     for(i=0; i<tamProy; i++)
     {
         if(progProyecto[i].estado!=0 && progProyecto[i].idProgramador == idAuxiliarProgramador)
@@ -683,9 +695,7 @@ void listarProyectosProgramador(Programador arrayProgramador[], int tamProg, Pro
                     break;
                 }
             }
-            system("@cls||clear");
-
-            printf("%-s %-s \n\n \t(%-d) %-s", arrayProgramador[indice].nombre,arrayProgramador[indice].apellido, progProyecto[i].idProyecto, titulo);
+            printf("%-s %-s \n\n \t(%-d) %-s\n", arrayProgramador[indice].nombre,arrayProgramador[indice].apellido, progProyecto[i].idProyecto, titulo);
             flag=1;
         }
     }
