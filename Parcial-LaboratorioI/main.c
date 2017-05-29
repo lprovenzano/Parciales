@@ -74,6 +74,10 @@ int main()
             listarProyectosProgramador(arrayProgramador, MAXPROGRAMADOR, arrayProyecto, MAXPROYECTO, progProyecto, niveles);
             break;
         case 8:
+            system("@cls||clear");
+            listarProyecto(arrayProyecto, MAXPROYECTO, arrayProgramador, MAXPROGRAMADOR, progProyecto);
+            getChar("\n\nENTER (para continuar)");
+            system("@cls||clear");
             proyectoMasDemandado(arrayProyecto, MAXPROYECTO, progProyecto);
             break;
         }

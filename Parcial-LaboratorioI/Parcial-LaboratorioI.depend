@@ -68,24 +68,25 @@
 	<time.h>
 	<string.h>
 
-1495479703 source:c:\users\lprovenzano\desktop\parciales-master\parcial-laboratorioi\funciones.c
+1496070705 source:c:\users\lprovenzano\desktop\parciales-master\parcial-laboratorioi\funciones.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
+	<ctype.h>
 	"utn.h"
 	"funciones.h"
 
-1495457545 c:\users\lprovenzano\desktop\parciales-master\parcial-laboratorioi\utn.h
+1496062009 c:\users\lprovenzano\desktop\parciales-master\parcial-laboratorioi\utn.h
 
-1495464663 c:\users\lprovenzano\desktop\parciales-master\parcial-laboratorioi\funciones.h
+1496063985 c:\users\lprovenzano\desktop\parciales-master\parcial-laboratorioi\funciones.h
 
-1495464683 source:c:\users\lprovenzano\desktop\parciales-master\parcial-laboratorioi\main.c
+1496063502 source:c:\users\lprovenzano\desktop\parciales-master\parcial-laboratorioi\main.c
 	<stdio.h>
 	<stdlib.h>
 	"utn.h"
 	"funciones.h"
 
-1495457545 source:c:\users\lprovenzano\desktop\parciales-master\parcial-laboratorioi\utn.c
+1496062009 source:c:\users\lprovenzano\desktop\parciales-master\parcial-laboratorioi\utn.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>

@@ -40,6 +40,7 @@ void inicializoEnCero(Programador arrayProgramador[], ProgramadorProyecto progPr
 void cargarCategorias(Categoria niveles[]);
 
 //Programador
+void listadoParcialProgramadores(Programador arrayProgramador[], int tam);
 void cargarProgramador(Programador arrayProgramador[]);
 void altaProgramador(Programador arrayProgramador[], int tam);
 void ordenarProgramadores(Programador arrayProgramador[], int tamProg);

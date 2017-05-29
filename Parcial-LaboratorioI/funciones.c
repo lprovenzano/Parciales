@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 #include "utn.h"
 #include "funciones.h"
 
@@ -65,6 +66,21 @@ void cargarCategorias(Categoria niveles[])
         niveles[i].idCategoria = categorias[i];
         strcpy(niveles[i].descripcion, detalle[i]);
         niveles[i].pagoPorHora = pago[i];
+    }
+}
+
+void listadoParcialProgramadores(Programador arrayProgramador[], int tam)
+{
+    int j;
+    printf("LISTADO DE PROGRAMADORES\n");
+    printf("-------------------------------------------------------\n\n");
+    printf("| ID |    NOMBRE    |     APELLIDO     |    CATEGORIA\n\n");
+    for(j=0; j<tam; j++)
+    {
+        if(arrayProgramador[j].estado!=0)
+        {
+            printf(" %-d        %-10s\t%-20s\t%-d\n", arrayProgramador[j].id,arrayProgramador[j].nombre, arrayProgramador[j].apellido, arrayProgramador[j].idCategoria);
+        }
     }
 }
 
@@ -235,7 +251,7 @@ int buscarProgramadorId(Programador arrayProgramador[], int busqueda, int tam)
     int i, flag=0;
     for(i=0; i<tam; i++)
     {
-        if(busqueda == arrayProgramador[i].id)
+        if(busqueda == arrayProgramador[i].id && arrayProgramador[i].estado!=0)
         {
             flag=1;
             break;
@@ -302,51 +318,28 @@ int buscarIndiceProgramador(Programador arrayProgramador[], int idBusqueda, int 
 void modificarProgramador(Programador arrayProgramador[], Categoria niveles[],int tam, ProgramadorProyecto progProyecto[], Proyecto arrayProyecto[], int tamProy)
 {
     system("@cls||clear");
-    int i,j, idAuxiliar, validoBusqueda,flag=0, opcion;
-    printf("LISTADO DE PROGRAMADORES\n");
-    printf("-------------------------------------------------------\n\n");
-    printf("|ID|  NOMBRE  |  APELLIDO  |  CATEGORIA\n\n");
-    for(j=0; j<tam; j++)
-    {
-        if(arrayProgramador[j].estado!=0)
-        {
-            printf(" %d   %-s\t%-s\t        %-d\n", arrayProgramador[j].id,arrayProgramador[j].nombre, arrayProgramador[j].apellido, arrayProgramador[j].idCategoria);
-        }
-    }
-    printf("\n--------------------------------------------------------------------------------\n\n");
-    idAuxiliar = getValidInt("ID de Programador a modificar: ", "Error! solo numerico.", 1,50);
+    int i, idAuxiliar, validoBusqueda,flag=0, opcion;
+
+    listadoParcialProgramadores(arrayProgramador, tam);
+
+    idAuxiliar = getValidInt("\n\nID de Programador a modificar: ", "Error! solo numerico.", 1,50);
     validoBusqueda = buscarProgramadorId(arrayProgramador, idAuxiliar, tam);
+
     while(validoBusqueda!=1)
     {
-        printf("Ese ID no existe.");
+        printf("\nEse ID no existe.");
         getChar("\n\nENTER (para continuar)");
         system("@cls||clear");
 
-        printf("LISTADO DE PROGRAMADORES\n");
-        printf("-------------------------------------------------------\n\n");
-        printf("|ID|  NOMBRE  |  APELLIDO  |  CATEGORIA\n\n");
-        for(j=0; j<tam; j++)
-        {
-            if(arrayProgramador[j].estado!=0)
-            {
-                printf(" %d   %-s\t%-s\t        %-d\n", arrayProgramador[j].id,arrayProgramador[j].nombre, arrayProgramador[j].apellido, arrayProgramador[j].idCategoria);
-            }
-        }
-        printf("\n--------------------------------------------------------------------------------\n\n");
-        idAuxiliar = getValidInt("ID de Programador a modificar: ", "Error! solo numerico.", 1,50);
+        listadoParcialProgramadores(arrayProgramador, tam);
+
+        idAuxiliar = getValidInt("\n\nID de Programador a modificar: ", "Error! solo numerico.", 1,50);
         validoBusqueda = buscarProgramadorId(arrayProgramador, idAuxiliar, tam);
     }
     system("@CLS||clear");
-    printf("LISTADO DE PROGRAMADORES\n");
-    printf("-------------------------------------------------------\n\n");
-    printf("|ID|  NOMBRE  |  APELLIDO  |  CATEGORIA\n\n");
-    for(j=0; j<tam; j++)
-    {
-        if(arrayProgramador[j].estado!=0)
-        {
-            printf(" %d   %-s\t%-s\t        %-d\n", arrayProgramador[j].id,arrayProgramador[j].nombre, arrayProgramador[j].apellido, arrayProgramador[j].idCategoria);
-        }
-    }
+
+    listadoParcialProgramadores(arrayProgramador, tam);
+
     opcion = getValidInt("\nParametro a modificar: \n\n 1. Nombre \n 2. Apellido \n 3. Categoria\n\n", "Solo numerico", 1,3);
     for(i=0; i<tam; i++)
     {
@@ -368,14 +361,16 @@ void modificarProgramador(Programador arrayProgramador[], Categoria niveles[],in
                 flag=1;
                 break;
             }
-            printf("\n\nSe ha modificado con exito");
+            system("@cls||clear");
+            printf("\nSe ha modificado con exito");
             getChar("\n\nENTER (para continuar)");
             break;
         }
     }
     if(flag==0)
     {
-        printf("No se ha podido modificar, ya que ese ID no existe.");
+        system("@cls||clear");
+        printf("No se ha podido modificar.");
     }
     system("@cls||clear");
     menu();
@@ -396,55 +391,61 @@ void modificarProgramador(Programador arrayProgramador[], Categoria niveles[],in
 void borrarProgramador(Programador arrayProgramador[], Categoria niveles[],int tam, ProgramadorProyecto progProyecto[], Proyecto arrayProyecto[], int tamProy)
 {
     system("@cls||clear");
-    int i,j, idAuxiliar, validoBusqueda,flag=0;
-    printf("LISTADO DE PROGRAMADORES\n");
-    printf("-------------------------------------------------------\n\n");
-    printf("|ID|  NOMBRE  |  APELLIDO  |  CATEGORIA\n\n");
-    for(j=0; j<tam; j++)
-    {
-        if(arrayProgramador[j].estado!=0)
-        {
-            printf(" %d   %-s\t%-s\t        %-d\n", arrayProgramador[j].id,arrayProgramador[j].nombre, arrayProgramador[j].apellido, arrayProgramador[j].idCategoria);
-        }
-    }
-    printf("\n--------------------------------------------------------------------------------\n\n");
-    idAuxiliar = getValidInt("ID de Programador a borrar: ", "Error! solo numerico.", 1,50);
+    int i, idAuxiliar, validoBusqueda,flag=0;
+    char confirmacion;
+
+    listadoParcialProgramadores(arrayProgramador, tam);
+
+    idAuxiliar = getValidInt("\n\nID de Programador a borrar: ", "Error! solo numerico.", 1,50);
     validoBusqueda = buscarProgramadorId(arrayProgramador, idAuxiliar, tam);
+
     while(validoBusqueda!=1)
     {
-        printf("Ese ID no existe.");
+        printf("\nEse ID no existe.");
         getChar("\n\nENTER (para continuar)");
         system("@cls||clear");
-        printf("LISTADO DE PROGRAMADORES\n");
-        printf("-------------------------------------------------------\n\n");
-        printf("|ID|  NOMBRE  |  APELLIDO  |  CATEGORIA\n\n");
-        for(j=0; j<tam; j++)
-        {
-            if(arrayProgramador[j].estado!=0)
-            {
-                printf(" %d   %-s\t%-s\t        %-d\n", arrayProgramador[j].id,arrayProgramador[j].nombre, arrayProgramador[j].apellido, arrayProgramador[j].idCategoria);
-            }
-        }
-        printf("\n--------------------------------------------------------------------------------\n\n");
-        idAuxiliar = getValidInt("ID de Programador a borrar: ", "Error! solo numerico.", 1,50);
+
+        listadoParcialProgramadores(arrayProgramador, tam);
+
+        idAuxiliar = getValidInt("\n\nID de Programador a borrar: ", "Error! solo numerico.", 1,50);
         validoBusqueda = buscarProgramadorId(arrayProgramador, idAuxiliar, tam);
     }
-    system("@CLS||clear");
+
     for(i=0; i<tam; i++)
     {
         if(idAuxiliar==arrayProgramador[i].id && arrayProgramador[i].estado==1)
         {
-            arrayProgramador[i].estado=0;
-            flag=1;
-            printf("Se ha borrado con exito.");
-            getChar("\n\nENTER (para continuar)");
-            system("@cls||clear");
-            break;
+            confirmacion = tolower(getChar("\n\nEsta seguro que desea borrar este programador? (s|n): "));
+
+            while(confirmacion!='s' && confirmacion!='n')
+            {
+                system("@CLS||clear");
+                listadoParcialProgramadores(arrayProgramador, tam);
+                printf("\n\nEl caracter ingresado no es correcto.");
+                confirmacion = tolower(getChar("\nEsta seguro que desea borrar este programador? (s|n): "));
+            }
+
+            if(confirmacion=='s')
+            {
+                system("@CLS||clear");
+                arrayProgramador[i].estado=0;
+                flag=1;
+                printf("\nSe ha borrado con exito.");
+                getChar("\n\nENTER (para continuar)");
+                system("@cls||clear");
+                break;
+            }
+
+            else
+            {
+                break;
+            }
         }
     }
     if(flag==0)
     {
-        printf("No se ha podido borrar, el ID de programador no existe.");
+        system("@cls||clear");
+        printf("\nEl programador no fue dado de baja.");
         getChar("\n\nENTER (para continuar)");
         system("@cls||clear");
     }
@@ -525,7 +526,7 @@ void listarProyecto(Proyecto arrayProyecto[], int tamProy, Programador arrayProg
         }
         totalPersonas = junior+semisr+senior;
         arrayProyecto[i].cantProgramadores = totalPersonas;
-        printf("  %d\t%-29s%-10d%-02d\t%d       %d\n", arrayProyecto[i].id,arrayProyecto[i].titulo, junior, semisr, senior, totalPersonas);
+        printf("  %d\t%-29s%-10d%-2d\t%d       %d\n", arrayProyecto[i].id,arrayProyecto[i].titulo, junior, semisr, senior, totalPersonas);
         junior = 0;
         semisr = 0;
         senior = 0;
@@ -550,36 +551,19 @@ void asignarProgramador(Programador arrayProgramador[], int tamProg, Proyecto ar
     float horas;
     system("@cls||clear");
 
-    printf("LISTADO DE PROGRAMADORES\n");
-    printf("-------------------------------------------------------\n\n");
-    printf("|ID|  NOMBRE  |  APELLIDO  |  CATEGORIA\n\n");
-    for(j=0; j<tamProg; j++)
-    {
-        if(arrayProgramador[j].estado!=0)
-        {
-            printf(" %d   %-s\t%-s\t        %-d\n", arrayProgramador[j].id,arrayProgramador[j].nombre, arrayProgramador[j].apellido, arrayProgramador[j].idCategoria);
-        }
-    }
+    listadoParcialProgramadores(arrayProgramador, tamProg);
 
     idAuxiliarProgramador = getValidInt("\n\nID de Programador: ", "Error! solo numerico.", 1,50);
     validoBusqueda = buscarProgramadorId(arrayProgramador, idAuxiliarProgramador, tamProg);
 
     while(validoBusqueda!=1)
     {
-        printf("Ese ID no existe.");
+        printf("\nEse ID no existe.");
         getChar("\n\nENTER (para continuar)");
         system("@cls||clear");
 
-        printf("LISTADO DE PROGRAMADORES\n");
-        printf("-------------------------------------------------------\n\n");
-        printf("|ID|  NOMBRE  |  APELLIDO  |  CATEGORIA\n\n");
-        for(j=0; j<tamProg; j++)
-        {
-            if(arrayProgramador[j].estado!=0)
-            {
-                printf(" %d   %-s\t%-s\t        %-d\n", arrayProgramador[j].id,arrayProgramador[j].nombre, arrayProgramador[j].apellido, arrayProgramador[j].idCategoria);
-            }
-        }
+        listadoParcialProgramadores(arrayProgramador, tamProg);
+
         idAuxiliarProgramador = getValidInt("\n\nID de Programador: ", "Error! solo numerico.", 1,50);
         validoBusqueda = buscarProgramadorId(arrayProgramador, idAuxiliarProgramador, tamProg);
     }
@@ -655,36 +639,19 @@ void listarProyectosProgramador(Programador arrayProgramador[], int tamProg, Pro
     char titulo[51];
     system("@cls||clear");
 
-    printf("LISTADO DE PROGRAMADORES\n");
-    printf("-------------------------------------------------------\n\n");
-    printf("|ID|  NOMBRE  |  APELLIDO  |  CATEGORIA\n\n");
-    for(j=0; j<tamProg; j++)
-    {
-        if(arrayProgramador[j].estado!=0)
-        {
-            printf(" %d   %-s\t%-s\t        %-d\n", arrayProgramador[j].id,arrayProgramador[j].nombre, arrayProgramador[j].apellido, arrayProgramador[j].idCategoria);
-        }
-    }
+    listadoParcialProgramadores(arrayProgramador, tamProg);
 
     idAuxiliarProgramador = getValidInt("\n\nID de Programador: ", "Error! solo numerico.", 1,50);
     validoBusqueda = buscarProgramadorId(arrayProgramador, idAuxiliarProgramador, tamProg);
 
     while(validoBusqueda!=1)
     {
-        printf("Ese ID no existe.");
+        printf("\nEse ID no existe.");
         getChar("\n\nENTER (para continuar)");
         system("@cls||clear");
 
-        printf("LISTADO DE PROGRAMADORES\n");
-        printf("-------------------------------------------------------\n\n");
-        printf("|ID|  NOMBRE  |  APELLIDO  |  CATEGORIA\n\n");
-        for(j=0; j<tamProg; j++)
-        {
-            if(arrayProgramador[j].estado!=0)
-            {
-                printf(" %d   %-s\t%-s\t        %-d\n", arrayProgramador[j].id,arrayProgramador[j].nombre, arrayProgramador[j].apellido, arrayProgramador[j].idCategoria);
-            }
-        }
+        listadoParcialProgramadores(arrayProgramador, tamProg);
+
         idAuxiliarProgramador = getValidInt("\n\nID de Programador: ", "Error! solo numerico.", 1,50);
         validoBusqueda = buscarProgramadorId(arrayProgramador, idAuxiliarProgramador, tamProg);
     }
@@ -729,27 +696,30 @@ void listarProyectosProgramador(Programador arrayProgramador[], int tamProg, Pro
 */
 void proyectoMasDemandado(Proyecto arrayProyecto[], int tamProy, ProgramadorProyecto progProyecto[])
 {
-    int i,j;
-    Proyecto auxiliar;
-
-    for(i=0; i<3-1; i++)
-    {
-        for(j=i+1; j<3; j++)
-        {
-            if(arrayProyecto[i].cantProgramadores<arrayProyecto[j].cantProgramadores)
-            {
-                auxiliar = arrayProyecto[i];
-                arrayProyecto[i] = arrayProyecto[j];
-                arrayProyecto[j] = auxiliar;
-            }
-        }
-    }
-    system("@cls||clear");
+    int i, flag=0, mayor;
 
     for(i=0; i<3; i++)
     {
-        printf("\n%s es el mas demandado, tiene %d programador/es.\n", arrayProyecto[i].titulo,arrayProyecto[i].cantProgramadores);
-        break;
+        if(flag==0 || arrayProyecto[i].cantProgramadores>mayor)
+        {
+            mayor=arrayProyecto[i].cantProgramadores;
+            flag=1;
+        }
+    }
+
+    for(i=0; i<3; i++)
+    {
+        if(arrayProyecto[i].cantProgramadores==mayor && mayor!=0)
+        {
+            system("@cls||clear");
+            printf("\n->%s es el mas demandado, tiene %d programador/es.\n", arrayProyecto[i].titulo,mayor);
+            break;
+        }
+    }
+    if(mayor==0)
+    {
+        system("@cls||clear");
+        printf("Aun no se han asignado programadores a proyectos.");
     }
 
     getChar("\n\nENTER (para continuar)");
