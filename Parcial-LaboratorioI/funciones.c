@@ -69,6 +69,14 @@ void cargarCategorias(Categoria niveles[])
     }
 }
 
+
+/**
+*\brief Muestra en pantalla el ID, nombre, apellido y categoria (numérica) de los programadores.
+*\param Array de estructura Programador.
+*\param Array de estructura ProgramadorProyecto.
+*\return void.
+*
+*/
 void listadoParcialProgramadores(Programador arrayProgramador[], int tam)
 {
     int j;

@@ -59,15 +59,19 @@ int main()
             break;
         case 5:
             listarProgramador(arrayProgramador, niveles, MAXPROGRAMADOR, progProyecto, arrayProyecto, MAXPROYECTO);
+
             getChar("\n\nENTER (para continuar)");
             system("@cls||clear");
+
             menu();
             break;
         case 6:
             system("@cls||clear");
             listarProyecto(arrayProyecto, MAXPROYECTO, arrayProgramador, MAXPROGRAMADOR, progProyecto);
+
             getChar("\n\nENTER (para continuar)");
             system("@cls||clear");
+
             menu();
             break;
         case 7:
@@ -76,8 +80,10 @@ int main()
         case 8:
             system("@cls||clear");
             listarProyecto(arrayProyecto, MAXPROYECTO, arrayProgramador, MAXPROGRAMADOR, progProyecto);
+
             getChar("\n\nENTER (para continuar)");
             system("@cls||clear");
+
             proyectoMasDemandado(arrayProyecto, MAXPROYECTO, progProyecto);
             break;
         }
