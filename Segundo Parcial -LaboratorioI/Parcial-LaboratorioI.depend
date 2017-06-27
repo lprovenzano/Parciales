@@ -1,0 +1,71 @@
+# depslib dependency file v1.0
+1498526092 source:/home/alumno/Provenzano-Luca-1F/Parcial-LaboratorioI/main.c
+	<stdio.h>
+	<stdlib.h>
+	"ArrayList.h"
+	"utn.h"
+	"lib.h"
+
+1498514961 source:/home/alumno/Provenzano-Luca-1F/Parcial-LaboratorioI/ArrayList.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+
+1498301240 /home/alumno/Provenzano-Luca-1F/Parcial-LaboratorioI/ArrayList.h
+
+1494709266 /home/alumno/Provenzano-Luca-1F/Parcial-LaboratorioI/utn.h
+
+1498523831 /home/alumno/Provenzano-Luca-1F/Parcial-LaboratorioI/lib.h
+	"ArrayList.h"
+
+1498517004 source:/home/alumno/Provenzano-Luca-1F/Parcial-LaboratorioI/utn.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"utn.h"
+
+1498526114 source:/home/alumno/Provenzano-Luca-1F/Parcial-LaboratorioI/lib.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+	"utn.h"
+	"lib.h"
+
+1498526214 source:c:\users\lprovenzano\desktop\parcial-laboratorioi\arraylist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+
+1498526214 c:\users\lprovenzano\desktop\parcial-laboratorioi\arraylist.h
+
+1498526214 source:c:\users\lprovenzano\desktop\parcial-laboratorioi\lib.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+	"utn.h"
+	"lib.h"
+
+1498526214 c:\users\lprovenzano\desktop\parcial-laboratorioi\utn.h
+
+1498526214 c:\users\lprovenzano\desktop\parcial-laboratorioi\lib.h
+	"ArrayList.h"
+
+1498526214 source:c:\users\lprovenzano\desktop\parcial-laboratorioi\main.c
+	<stdio.h>
+	<stdlib.h>
+	"ArrayList.h"
+	"utn.h"
+	"lib.h"
+
+1498526214 source:c:\users\lprovenzano\desktop\parcial-laboratorioi\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"utn.h"
+
