@@ -323,6 +323,6 @@ void pause(char message[])
 {
     getChar(message);
     //clean_stdin();
-    system("clear");
+    system("cls");
 }
 

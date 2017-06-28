@@ -51,21 +51,27 @@ int cargarTareas(ArrayList* this, Tarea* t)
     char descripcionAux[101], prioridadAux[3], tiempoAux[5];
 
     if((f = fopen("tar.csv", "r"))==NULL)
-        retorno =-1;
-
-    while(!(feof(f)))
     {
-        t=newTarea();
-        if(t!=NULL)
-        {
-            fscanf(f,"%[^,],%[^,],%[^\n]\n", descripcionAux, prioridadAux, tiempoAux);
-            strcpy(t->descripcion, descripcionAux);
-            t->prioridad = atoi(prioridadAux);
-            t->tiempo = atof(tiempoAux);
-            al_add(this, t);
-        }
+        retorno =-1;
     }
 
+    else
+    {
+        rewind(f);
+        while(!(feof(f)))
+        {
+            t=newTarea();
+            if(t!=NULL)
+            {
+                fscanf(f,"%[^,],%[^,],%[^\n]\n", descripcionAux, prioridadAux, tiempoAux);
+                strcpy(t->descripcion, descripcionAux);
+                t->prioridad = atoi(prioridadAux);
+                t->tiempo = atof(tiempoAux);
+                al_add(this, t);
+            }
+        }
+    }
+    fclose(f);
     return retorno;
 }
 
@@ -76,7 +82,6 @@ int cargarTareas(ArrayList* this, Tarea* t)
  * \return void.
  *
  */
-
 void printLista(ArrayList* this, Tarea* t)
 {
     printf("%s---%d---%.2f\n",t->descripcion,t->prioridad, t->tiempo);
@@ -92,23 +97,27 @@ void printLista(ArrayList* this, Tarea* t)
  * \return [-1]=> Error. || [0]=> Si se particiono satisfactoriamente.
  *
  */
-
 int particionadoDeListas(ArrayList* listaInicial, ArrayList* lista_pAlta, ArrayList* lista_pBaja, Tarea* t)
 {
-    int i, retorno=0;
+    int i, retorno=-1;
 
-    for(i=0; i<al_len(listaInicial); i++)
+    if(t!=NULL)
     {
-        t = (Tarea*) al_get(listaInicial,i);
-        if(t->prioridad==0)
+        for(i=0; i<al_len(listaInicial); i++)
         {
-            al_add(lista_pBaja,t);
+            t = newTarea();
+            t = (Tarea*) al_get(listaInicial,i);
+            if(t->prioridad==0)
+            {
+                al_add(lista_pBaja,al_get(listaInicial, i));
 
+            }
+            if(t->prioridad==1)
+            {
+                al_add(lista_pAlta,al_get(listaInicial, i));
+            }
         }
-        if(t->prioridad==1)
-        {
-            al_add(lista_pAlta,t);
-        }
+        retorno = 0;
     }
 
     return retorno;
@@ -122,29 +131,28 @@ int particionadoDeListas(ArrayList* listaInicial, ArrayList* lista_pAlta, ArrayL
  * \return [-1]=> Error. || [0]=> Si se particiono satisfactoriamente.
  *
  */
-int resolverTareas(ArrayList* listaInicial, ArrayList* listaClonada, Tarea* t)
+int resolverTareas(ArrayList* listaClonada, Tarea* t)
 {
-
-    int i, retorno=0, checkIndex;
-
-    listaClonada = al_clone(listaInicial);
+    int i, retorno=-1, checkIndex;
 
     for(i=0; i<al_len(listaClonada); i++)
     {
         t = (Tarea*)al_get(listaClonada,i);
-        printf("(%d)--%s---%d---%.2f\n",al_indexOf(listaClonada, t),t->descripcion,t->prioridad, t->tiempo);
+        printf("(%d)--%s---%d---%.2f\n",i,t->descripcion,t->prioridad, t->tiempo);
     }
 
     checkIndex = getValidInt("\nSeleccione el indice de la tarea a resolver: ", "Debe ser numerico", 0, al_len(listaClonada));
-    if((al_pop(listaClonada, checkIndex-1))!=NULL)
+
+    t=al_pop(listaClonada, checkIndex);
+    if(t!=NULL)
     {
-        t=al_get(listaClonada, checkIndex-1);
-        printf("Se ha resuelto: \n");
-        printf("%s---%d---%.2f\n",t->descripcion,t->prioridad, t->tiempo);
+        printf("\nSe ha resuelto: \n\n");
+        printf("%s---%d---%.2f\n\n\n",t->descripcion,t->prioridad, t->tiempo);
+        pause("(ENTER) para continuar...");
+        retorno = 0;
     }
+
     return retorno;
-
-
 }
 
 /** \brief Escribe en un archivo de texto los datos de la estructura Persona.
@@ -171,6 +179,7 @@ int generarArchivos(ArrayList* lista_pAlta, ArrayList* lista_pBaja, Tarea* t)
     {
         for(i=0; i<al_len(lista_pAlta); i++)
         {
+            t = newTarea();
             t = (Tarea*)al_get(lista_pAlta,i);
             fflush(stdin);
             fprintf(fAlta,"%s,%d,%.2f\n",t->descripcion,t->prioridad, t->tiempo);
@@ -178,6 +187,7 @@ int generarArchivos(ArrayList* lista_pAlta, ArrayList* lista_pBaja, Tarea* t)
 
         for(j=0; j<al_len(lista_pBaja); j++)
         {
+            t = newTarea();
             t = (Tarea*)al_get(lista_pBaja,j);
             fflush(stdin);
             fprintf(fBaja,"%s,%d,%.2f\n",t->descripcion,t->prioridad, t->tiempo);
