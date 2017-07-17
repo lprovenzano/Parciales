@@ -1,0 +1,49 @@
+# depslib dependency file v1.0
+1498430436 source:d:\luca-parcial\final-laboi-provenzanol\arraylist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+
+1498306494 d:\luca-parcial\final-laboi-provenzanol\arraylist.h
+
+1499991598 source:d:\luca-parcial\final-laboi-provenzanol\log.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	"ArrayList.h"
+	"utn.h"
+	"log.h"
+	"service.h"
+
+1499989776 source:d:\luca-parcial\final-laboi-provenzanol\service.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+	"utn.h"
+	"log.h"
+	"service.h"
+
+1498431350 source:d:\luca-parcial\final-laboi-provenzanol\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"utn.h"
+
+1494709266 d:\luca-parcial\final-laboi-provenzanol\utn.h
+
+1499990381 source:d:\luca-parcial\final-laboi-provenzanol\main.c
+	<stdio.h>
+	<stdlib.h>
+	"ArrayList.h"
+	"utn.h"
+	"log.h"
+	"service.h"
+
+1499990369 d:\luca-parcial\final-laboi-provenzanol\log.h
+
+1499985696 d:\luca-parcial\final-laboi-provenzanol\service.h
+
